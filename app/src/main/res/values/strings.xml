@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MotherWeather</string>
+    <string name="edit_text_hint">输入城市</string>
 </resources>

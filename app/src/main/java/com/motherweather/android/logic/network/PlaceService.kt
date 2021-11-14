@@ -15,7 +15,7 @@ interface PlaceService {
      * @param(query: String) 提供访问url地址中的query参数
      * @return(Call<PlaceResponse>)
      */
-    @GET("v2/place?token={MotherWeatherApplication.TOKEN}&lang=zh_CN")
+    @GET("v2/place?token=${MotherWeatherApplication.TOKEN}&lang=zh_CN")
     fun searchPlaces(@Query("query")query: String):Call<PlaceResponse>
 
 }

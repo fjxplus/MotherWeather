@@ -15,16 +15,22 @@ import kotlin.coroutines.suspendCoroutine
  */
 object MotherWeatherNetwork {
 
-    private val placeService = ServiceCreator.create<PlaceService>()
+    private val placeService = ServiceCreator.create<PlaceService>()        //Retrofit网络请求接口的动态代理对象
+    private val weatherService = ServiceCreator.create<WeatherService>()
 
     /**
-     * searchPlaces()方法用于发出请求
+     * 发出请求的网络层接口
      */
     suspend fun searchPlaces(query: String) = placeService.searchPlaces(query).await()
+    suspend fun getDailyWeather(lng: String, lat: String) =
+        weatherService.getDailyWeather(lng, lat).await()
 
-    private suspend fun <T> Call<T>.await(): T{
+    suspend fun getRealtimeWeather(lng: String, lat: String) =
+        weatherService.getRealtimeWeather(lng, lat).await()
+
+    private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine { continuation ->
-            enqueue(object: Callback<T>{
+            enqueue(object : Callback<T> {
 
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     val body = response.body()

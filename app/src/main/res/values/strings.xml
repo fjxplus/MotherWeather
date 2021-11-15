@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MotherWeather</string>
+    <string name="app_name">Young天气</string>
     <string name="edit_text_hint">输入城市</string>
     <string name="split_line">|</string>
     <string name="forecast">预报</string>

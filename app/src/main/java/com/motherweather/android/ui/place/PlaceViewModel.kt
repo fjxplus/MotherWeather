@@ -22,4 +22,10 @@ class PlaceViewModel: ViewModel() {
     fun searchPlaces(query: String){            //向UI控制层提供获取数据的接口，传入参数是liveData数据发生变化，触发switchMap()
         searchLiveData.value = query
     }
+
+    fun savePlace(place: Place) = Repository.savePlace(place)           //用于向仓库层查询数据库的接口
+
+    fun getSavedPlace() = Repository.getSavedPlace()
+
+    fun isPlaceSaved() = Repository.isPlaceSaved()
 }

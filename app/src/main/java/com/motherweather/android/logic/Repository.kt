@@ -1,6 +1,8 @@
 package com.motherweather.android.logic
 
 import androidx.lifecycle.liveData
+import com.motherweather.android.logic.dao.PlaceDao
+import com.motherweather.android.logic.model.Place
 import com.motherweather.android.logic.model.Weather
 import com.motherweather.android.logic.network.MotherWeatherNetwork
 import kotlinx.coroutines.Dispatchers
@@ -65,5 +67,14 @@ object Repository {
             }
             emit(result)            //弹出数据，自动创建LiveData数据
         }
+
+    /**
+     * 仓库层获取本地保存城市信息的接口
+     */
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
+
+    fun getSavedPlace() = PlaceDao.getSavedPlace()
+
+    fun isPlaceSaved() = PlaceDao.isPlaceSaved()
 
 }
